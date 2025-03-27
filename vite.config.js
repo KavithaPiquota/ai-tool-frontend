@@ -8,8 +8,9 @@ export default defineConfig({
     outDir: 'dist'
   },
   server: {
-    // Use the PORT environment variable, or fallback to 5173 for local development
+    // Allows the app to be accessed on the correct port for Render
     port: process.env.PORT || 5173, 
-    host: true, // Allows the server to be accessed externally (on all network interfaces)
+    host: true, // Expose the server on all network interfaces (0.0.0.0)
+    allowedHosts: ['ai-tool-frontend.onrender.com'], // Add this line to allow the specific domain
   }
 })
