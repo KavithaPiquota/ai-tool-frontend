@@ -5,7 +5,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   return (
     <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
       <div className="sidebar-header">
-        <h3 className={isOpen ? "" : "hidden"}>Luna AI</h3>
+        <h3 className={isOpen ? "" : "hidden"}>Ai Tool</h3>
         <button className="toggle-btn" onClick={toggleSidebar}>
           <Menu size={20} />
         </button>
