@@ -1,46 +1,25 @@
-import React, { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
-import "./../styles/style.css";
+import React from "react";
+import { Home, BarChart, PieChart, Activity, Briefcase, Settings, Menu } from "lucide-react";
 
-const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(true);
-
+const Sidebar = ({ isOpen, toggleSidebar }) => {
   return (
     <div className={`sidebar ${isOpen ? "open" : "closed"}`}>
-      {/* Sidebar Header */}
       <div className="sidebar-header">
-        {isOpen && <h2>AI Chat</h2>}
-        <button className="toggle-btn" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <FaTimes /> : <FaBars />}
+        <h3 className={isOpen ? "" : "hidden"}>Luna AI</h3>
+        <button className="toggle-btn" onClick={toggleSidebar}>
+          <Menu size={20} />
         </button>
       </div>
-
-      {/* Sidebar Content */}
-      {isOpen && (
-        <div className="sidebar-content">
-          <h4>Today</h4>
-          <p className="selected-item">Create React App AI</p> 
-          
-          <h4>Previous 7 days</h4>
-          <p>AI Solutions</p>
-          <p>Marketing Strategy</p>
-
-          <h4>January</h4>
-          <p>Meta Data Creation</p>
-          <p>Analysis Data</p>
-          <p>UI Optimization</p>
-
-          <h4>October</h4>
-          <p>Digital Strategy</p>
-          <p>Data Analytics</p>
-          <p>Figma Prototype</p>
-        </div>
-      )}
-
-      {/* Sidebar Footer */}
-      <div className="sidebar-footer">
-        {isOpen && <p>Powered by AI</p>}
-      </div>
+      <ul className="menu">
+        <li><Home size={20} /><span className={isOpen ? "" : "hidden"}>Home</span></li>
+        <li><BarChart size={20} /><span className={isOpen ? "" : "hidden"}>Analytics</span></li>
+        <li><PieChart size={20} /><span className={isOpen ? "" : "hidden"}>Reports</span></li>
+        <li><Activity size={20} /><span className={isOpen ? "" : "hidden"}>Activity</span></li>
+        <li><Briefcase size={20} /><span className={isOpen ? "" : "hidden"}>Projects</span></li>
+        <li><Settings size={20} /><span className={isOpen ? "" : "hidden"}>Settings</span></li>
+      </ul>
+      
+      <div className={`sidebar-footer ${isOpen ? "" : "hidden"}`}>Powered by AI</div>
     </div>
   );
 };

@@ -1,20 +1,37 @@
-import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './pages/Login.jsx';
-import Register from './pages/Register.jsx';
-import DashBoard from './pages/DashBoard.jsx';
- 
-function App() {
+import React, { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import Header from "./components/Header";
+import ChatWindow from "./components/ChatWindow";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import "./styles/style.css";
+
+const Dashboard = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  return (
+    <div className="app-container">
+      <Sidebar isOpen={isSidebarOpen} toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
+      <div className={`main-content ${isSidebarOpen ? "expanded" : "collapsed"}`}>
+        <Header />
+        <ChatWindow />
+      </div>
+    </div>
+  );
+};
+
+const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<DashBoard />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;
