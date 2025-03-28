@@ -1,0 +1,86 @@
+[
+  {
+      "id": 1,
+      "feature": "Text Analysis",
+      "description": "Analyzes text for sentiment, keywords, and language detection.",
+      "status": "active",
+      "created_at": "2025-03-25T10:30:00Z"
+  },
+  {
+      "id": 2,
+      "feature": "Image Recognition",
+      "description": "Identifies objects, faces, and scenes in images.",
+      "status": "in development",
+      "created_at": "2025-03-25T10:45:00Z"
+  },
+  {
+      "id": 3,
+      "feature": "Chatbot Integration",
+      "description": "Integrates with customer support for automated responses.",
+      "status": "active",
+      "created_at": "2025-03-25T11:00:00Z"
+  },
+  {
+      "id": 4,
+      "feature": "Voice Commands",
+      "description": "Processes and interprets voice commands for AI interaction.",
+      "status": "active",
+      "created_at": "2025-03-25T11:15:00Z"
+  },
+  {
+      "id": 5,
+      "feature": "Data Visualization",
+      "description": "Generates interactive charts and graphs from AI insights.",
+      "status": "planned",
+      "created_at": "2025-03-25T11:30:00Z"
+  },
+  {
+      "id": 6,
+      "feature": "Language Translation",
+      "description": "Automatically translates text between multiple languages.",
+      "status": "active",
+      "created_at": "2025-03-25T11:45:00Z"
+  },
+  {
+      "id": 7,
+      "feature": "Predictive Analytics",
+      "description": "Predicts future trends based on historical data.",
+      "status": "in development",
+      "created_at": "2025-03-25T12:00:00Z"
+  },
+  {
+      "id": 8,
+      "feature": "Sentiment Analysis",
+      "description": "Determines emotional tone of text data.",
+      "status": "active",
+      "created_at": "2025-03-25T12:15:00Z"
+  },
+  {
+      "id": 9,
+      "feature": "Fraud Detection",
+      "description": "Identifies suspicious activities using AI models.",
+      "status": "active",
+      "created_at": "2025-03-25T12:30:00Z"
+  },
+  {
+      "id": 10,
+      "feature": "Automated Testing",
+      "description": "Executes test cases and validates app functionality automatically.",
+      "status": "in development",
+      "created_at": "2025-03-25T12:45:00Z"
+  },
+  {
+      "id": 11,
+      "feature": "Recommendation Engine",
+      "description": "Suggests products or content based on user behavior.",
+      "status": "active",
+      "created_at": "2025-03-25T13:00:00Z"
+  },
+  {
+      "id": 12,
+      "feature": "Anomaly Detection",
+      "description": "Identifies unusual patterns in data.",
+      "status": "planned",
+      "created_at": "2025-03-25T13:15:00Z"
+  }
+]

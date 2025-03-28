@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import ChatWindow from "./components/ChatWindow";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Report from './pages/Reports.jsx'; 
 import "./styles/style.css";
 
 const Dashboard = () => {
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/report" element={<Report />} />
       </Routes>
     </Router>
   );
