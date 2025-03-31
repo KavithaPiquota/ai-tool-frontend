@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Report from './pages/Reports.jsx'; 
 import "./styles/style.css";
+import SearchHistory from "./pages/SearchHistory.jsx";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -30,7 +31,8 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/report" element={<Report />} />
+        <Route path="/report" element={<Report />} />        
+        <Route path="/history" element={<SearchHistory />} />
       </Routes>
     </Router>
   );

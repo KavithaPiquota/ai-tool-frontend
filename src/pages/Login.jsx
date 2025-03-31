@@ -1,45 +1,38 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react'; 
 import '../styles/Login.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-   const [email, setEmail] = useState('');
-   const [password, setPassword] = useState('');
-   const [error, setError] = useState('');
-   const [isLoading, setIsLoading] = useState(false);
-   const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
 
-   const handleSubmit = async (e) => {
-     e.preventDefault();
-     
-     // Set loading state
-     setIsLoading(true);
-     
-     // Basic validation (you can expand on this)
-     if (!email || !password) {
-       setError('Please enter both email and password');
-       setIsLoading(false);
-       return;
-     }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const res = await axios.post(`${API_BASE_URL}/login`, {
+        email,
+        password,
+      });
+      localStorage.setItem('token', res.data.token);
+      navigate('/dashboard');
+    } catch (err) {
+      console.error(err.response?.data || err.message);
+      alert(err.response?.data?.message || 'Login failed');
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-     try {
-       // Simulating an authentication process
-       // In a real app, you would replace this with an actual API call
-       if (email && password) {
-         // Clear any previous errors
-         setError('');
-         
-         // Redirect to dashboard
-         navigate('/dashboard');
-       } else {
-         setError('Invalid credentials');
-       }
-     } catch (err) {
-       setError('An error occurred. Please try again.');
-     } finally {
-       setIsLoading(false);
-     }
-   };
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
    return (
      <div className="login-container">

@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Navbar, Nav, Dropdown, Form } from 'react-bootstrap';  
+import { Container, Row, Col, Navbar, Nav, Dropdown, Form } from 'react-bootstrap';
 import { Home, BarChart, PieChart, Settings, Briefcase, Activity, CheckCircle, LogOut, ChevronLeft, ChevronRight } from 'lucide-react';
-import data from '../data/data.json';  
+import data from '../data/data.json';
 import '../styles/Report.css';
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
-import TableComponents from '../components/ReusableTable';  
+import TableComponents from '../components/ReusableTable';
 
 const Reports = () => {
 
-   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
   const recordsPerPage = 5;
   const [searchTerm, setSearchTerm] = useState('');
@@ -21,7 +21,7 @@ const Reports = () => {
     { header: 'STATUS', field: 'status' },
     { header: 'CREATED AT', field: 'created_at' }
   ];
-  
+
   const filteredData = data.filter((item) =>
     Object.values(item).some((value) =>
       value?.toString().toLowerCase().includes(searchTerm.toLowerCase())
@@ -44,7 +44,7 @@ const Reports = () => {
 
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
-    setCurrentPage(1);  
+    setCurrentPage(1);
   };
 
   const handlePageClick = (pageNumber) => {
@@ -56,7 +56,7 @@ const Reports = () => {
     for (let i = 1; i <= totalPages; i++) {
       pageNumbers.push(
         <span
-           id="pager"
+          id="pager"
           key={i}
           onClick={() => handlePageClick(i)}
           className={`page-number ${currentPage === i ? 'active' : ''}`}
@@ -77,16 +77,14 @@ const Reports = () => {
     return pageNumbers;
   };
   return (
-
     <div className="app-container">
-<div className={`${isSidebarOpen ? "sidebar-open" : "sidebar-closed"}`}>
-          <Sidebar isOpen={isSidebarOpen} toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
-           
-        </div>
-        <div className="main-content expanded">
-            <Header />
-            <div>
-            <Col md={9} className="content">
+      <div className={`${isSidebarOpen ? "sidebar-open" : "sidebar-closed"}`}>
+        <Sidebar isOpen={isSidebarOpen} toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
+      </div>
+      <div className="main-content expanded">
+        <Header />
+        <div>
+          <Col md={9} className="content">
             <Form className="mb-3">
               <Form.Control
                 className='search-bar'
@@ -96,7 +94,6 @@ const Reports = () => {
                 onChange={handleSearch}
               />
             </Form>
-
             <TableComponents
               data={filteredData}
               columns={columns}
@@ -104,7 +101,6 @@ const Reports = () => {
               currentPage={currentPage}
               recordsPerPage={recordsPerPage}
             />
-
             <div className="d-flex justify-content-center align-items-center pagination-container">
               <ChevronLeft
                 className='right-arrow'
@@ -113,9 +109,7 @@ const Reports = () => {
                 style={{ cursor: currentPage === 1 ? 'not-allowed' : 'pointer', color: currentPage === 1 ? '#ccc' : '#000' }}
                 disabled={currentPage === 1}
               />
-
               <div className="page-numbers">{renderPageNumbers()}</div>
-
               <ChevronRight
                 className='left-arrow'
                 size={30}
@@ -125,14 +119,9 @@ const Reports = () => {
               />
             </div>
           </Col>
-            </div>
-            </div>
+        </div>
+      </div>
     </div>
-     
-
-        
-    
-    
   );
 };
 

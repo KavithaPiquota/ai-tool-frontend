@@ -24,13 +24,13 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           <span className={isOpen ? "" : "hidden"}>Reports</span>
         </Link>
       </li>
-      {/* <li>
-        <Link to="/analytic" className="menu-link">
+      <li>
+        <Link to="/history" className="menu-link">
           <BarChart size={20} />
-          <span className={isOpen ? "" : "hidden"}>Analytics</span>
+          <span className={isOpen ? "" : "hidden"}>History</span>
         </Link>
       </li>
-      <li>
+       {/*<li>
         <Link to="/project" className="menu-link">
           <Briefcase size={20} />
           <span className={isOpen ? "" : "hidden"}>Projects</span>
