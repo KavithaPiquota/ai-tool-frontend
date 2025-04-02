@@ -163,10 +163,23 @@ const Register = () => {
             </div>
             {errors.password && <div className="error-message">{errors.password}</div>}
           </div>
-
+          <div >
+            <label className="checkbox-container">
+              <input
+                type="checkbox"
+                name="terms"
+                checked={form.terms}
+                onChange={handleChange}
+              />
+              <span className="checkbox-label">
+                I agree to the <a href="#terms">terms and conditions</a>
+              </span>
+            </label>
+            {errors.terms && <div className="error-message">{errors.terms}</div>}
+          </div>
           <div className="button-container">
             <button type="button" className="next-button" onClick={nextStep}>
-              Continue
+              CREATE ACCOUNT
             </button>
           </div>
         </>

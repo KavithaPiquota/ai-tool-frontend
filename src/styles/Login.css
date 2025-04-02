@@ -469,13 +469,13 @@ input[type="email"]::placeholder {
 
 /* Field labels with matching colors */
 .form-group:nth-child(1) label {
-  color: darkmagenta;
+  color:var(--text-dark);
   position: relative;
   right: 1.5px;
 }
 
 .form-group:nth-child(2) .password-header label {
-  color: darkmagenta;
+  color: var(--text-dark);
 }
 
 /* Responsive Design */

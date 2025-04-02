@@ -29,7 +29,7 @@
     height: 100%;
     position: relative;
     top:50px;
-    left: 300px;
+    left: 310px;
   }
   
   .table th, .table td {
@@ -57,7 +57,10 @@
     background: #d7d3d3;  
   }
   .table tbody tr:nth-child(odd) {
-    background: #5d5b5b;  
+    background: #d7d3d3;  
+  }
+  .table tbody tr{
+    color:#000;
   }
   #pager{
     position: relative;
