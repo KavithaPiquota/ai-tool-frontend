@@ -1,6 +1,5 @@
 /* Sidebar */
 .sidebar {
-  width: 30%;
   height: 100vh;
   background-color: #2d3748;
   color: #e2e8f0;
@@ -8,8 +7,7 @@
   flex-direction: column;
   transition: width 0.3s ease-in-out;
   overflow-y: auto;
-  width: 65px;
-  position: fixed;
+  position: relative;
   left: 0;
   top: 0;
   box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
@@ -20,6 +18,13 @@
 .sidebar.open {
   width: 270px;
 }
+
+
+  
+.sidebar.closed {
+  width: 70px;
+}
+
 
 /* Sidebar Header */
 .sidebar-header {
@@ -196,7 +201,7 @@
     width: 55px;
   }
   .sidebar.open {
-    width: 180px;
+    width: 240px;
   }
   .sidebar-header h3 {
     font-size: 16px;
@@ -252,3 +257,5 @@
     height: 20px;
   }
 }
+
+

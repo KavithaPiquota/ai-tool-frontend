@@ -78,11 +78,9 @@ const Reports = () => {
   };
   return (
     <div className="app-containers">
-      <div className={`${isSidebarOpen ? "sidebar-open" : "sidebar-closed"}`}>
-        <Sidebar isOpen={isSidebarOpen} toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
-      </div>
+      
       <div className="main-contents expanded">
-        <Header />
+        
         <div>
           <Col md={9} className="contents">
             <Form className="mb-3">

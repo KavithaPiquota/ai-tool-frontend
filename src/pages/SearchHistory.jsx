@@ -44,11 +44,7 @@ const SearchHistory = () => {
     return (
 
         <div className="app-container">
-            <div className={`${isSidebarOpen ? "sidebar-open" : "sidebar-closed"}`}>
-                <Sidebar isOpen={isSidebarOpen} toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
-            </div>
-            <div className="main-content expanded">
-                <Header />
+
                 <div className="chat-window">
                     <Col md={9} className="content">
                         <h2>Your Search History</h2>
@@ -75,8 +71,6 @@ const SearchHistory = () => {
                     </Col>
                 </div>
             </div>
-        </div>
-
     );
 };
 

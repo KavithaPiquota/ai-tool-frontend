@@ -1,8 +1,4 @@
-.app-container {
-  display: flex;
-  height: 100vh;
-  width: 100vw;
-}
+
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -59,190 +55,16 @@
 .cancel:hover {
   background: #c82333;
 }
-/* Sidebar */
-.sidebar {
-  height: 100vh;
-  background-color: #1e293b;
-  color: rgb(255, 255, 255);
-  display: flex;
-  flex-direction: column;
-  transition: width 0.3s ease-in-out;
-  overflow: hidden;
-  width: 80px;
-  position: fixed;
-  left: 0;
-  top: 0;
-  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
-}
 
-.sidebar.open {
-  width: 260px;
-  align-items: stretch;
-}
-
-/* Sidebar Header */
-.sidebar-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 70px;
-  width: 100%;
-  padding: 15px;
-  background-color: #54627a;
-  transition: justify-content 0.3s ease-in-out;
-}
-
-.sidebar-header h3 {
-  font-family: "Inter", "Poppins", sans-serif;
-  font-size: 25px;
-  font-weight: 600;
-  margin-left: 12px;
-  color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: 0.8px;
-}
-.menu-link {
-  display: flex;
-  align-items: center;
-  width: 500%;
-  text-align: right;
-  padding: 15px 20px;
-
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  transition: background 0.3s;
-}
-
-.menu-link:hover {
-  color: #fff;
-}
-
-.menu li:first-child .menu-link {
-  margin-right: 30px;
-}
-.menu li:nth-child(2) .menu-link {
-  margin-right: 49px;
-}
-.menu li:nth-child(3) .menu-link {
-  margin-right: 59px;
-}
-.sidebar.closed .sidebar-header {
-  justify-content: center;
-}
-
-/* Logo */
-.logo {
-  width: 120px;
-  height: auto;
-  transition: opacity 0.3s ease-in-out;
-}
-
-/* Toggle Button */
-.toggle-btn {
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  padding: 8px;
-  transition: transform 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-}
-
-/* Hover Effect */
-.toggle-btn:hover {
-  transform: scale(1.1);
-}
-
-.toggle-btn:focus {
-  outline: none;
-}
-
-/* Sidebar Menu */
-.menu {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-
-  width: 100%;
-  margin-top: 20px;
-}
-
-.menu li {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 15px 20px;
-  cursor: pointer;
-  transition: background 0.3s, padding-left 0.3s;
-  font-size: 16px;
-  width: 100%;
-  white-space: nowrap;
-}
-
-.menu li:hover {
-  background: rgba(255, 255, 255, 0.1);
-  padding-left: 25px;
-}
-
-.menu li svg {
-  width: 22px;
-  height: 22px;
-  transition: margin 0.3s ease-in-out;
-  margin-right: 12px;
-}
-
-.sidebar.closed .menu li {
-  justify-content: center;
-  padding: 15px;
-}
-
-.menu-link {
-  margin-left: 10px;
-  color: white;
-}
-.menu-link.active {
-  background-color: #54627a;
-}
-.sidebar.closed .menu li span {
-  display: none;
-}
-
-/* Sidebar Footer */
-.sidebar-footer {
-  padding: 15px;
-  text-align: center;
-  font-size: 14px;
-  background-color: #54627a;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .sidebar {
-    width: 60px;
-  }
-
-  .sidebar.open {
-    width: 200px;
-  }
-}
 
 /* Main Content */
 .main-content {
-  flex-grow: 1;
+  margin-left: 280px;
+  flex: 1;
+  display: flex;
   flex-direction: column;
-  background: #f1f5f9;
+  background-color: #f3f4f6;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Header */
@@ -391,7 +213,7 @@
   outline: none !important;
 }
 
-/* 📱 Responsive Adjustments */
+/* Responsive */
 @media (max-width: 1024px) {
   .chat-container {
     padding: 30px 15px;
@@ -404,14 +226,6 @@
 }
 
 @media (max-width: 768px) {
-  .sidebar.open {
-    left: 0;
-    width: 260px;
-  }
-
-  .sidebar-header {
-    height: 60px;
-  }
 
   .toggle-btn:focus {
     outline: none;
@@ -431,10 +245,6 @@
   }
 
   .chat-window {
-    margin-left: 0;
-  }
-
-  .sidebar.open + .main-content {
     margin-left: 0;
   }
 
@@ -471,12 +281,6 @@
   }
 }
 
-.sidebar-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-}
 
 .logo {
   width: 120px;

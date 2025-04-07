@@ -26,7 +26,6 @@ const Header = () => {
       }
 
       try {
-        // Fetch user dashboard data
         const response = await fetch(`${API_BASE_URL}/dashboard`, {
           headers: { Authorization: token },
         });
