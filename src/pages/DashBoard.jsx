@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import ChatWindow from "../components/ChatWindow";
-import "../styles/dashboard.css";
 
 const Dashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);

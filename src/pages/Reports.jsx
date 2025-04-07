@@ -77,14 +77,14 @@ const Reports = () => {
     return pageNumbers;
   };
   return (
-    <div className="app-container">
+    <div className="app-containers">
       <div className={`${isSidebarOpen ? "sidebar-open" : "sidebar-closed"}`}>
         <Sidebar isOpen={isSidebarOpen} toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
       </div>
-      <div className="main-content expanded">
+      <div className="main-contents expanded">
         <Header />
         <div>
-          <Col md={9} className="content">
+          <Col md={9} className="contents">
             <Form className="mb-3">
               <Form.Control
                 className='search-bar'

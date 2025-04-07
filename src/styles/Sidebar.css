@@ -1,0 +1,254 @@
+/* Sidebar */
+.sidebar {
+  width: 30%;
+  height: 100vh;
+  background-color: #2d3748;
+  color: #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease-in-out;
+  overflow-y: auto;
+  width: 65px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+}
+
+/* Expanded Sidebar */
+.sidebar.open {
+  width: 270px;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+  padding: 10px 15px;
+  background-color: #4a5568;
+  border-bottom: 1px solid #43414b;
+}
+
+.logo-container {
+  flex-grow: 1;
+}
+
+.sidebar-header h3 {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 0;
+  align-items: start;
+  position: absolute;
+  margin-top: 12px;
+  margin-right: 80px;
+}
+
+/* Toggle Button */
+.toggle-btn {
+  background: none;
+  border: none;
+  color: #cbd5e0;
+  cursor: pointer;
+  padding: 8px;
+  transition: transform 0.2s ease-in-out, background-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+}
+
+.toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  transform: scale(1.05);
+}
+
+/* Sidebar Closed Mode */
+.sidebar.closed .sidebar-header {
+  justify-content: center;
+  padding: 10px;
+}
+
+.sidebar.closed .logo-container {
+  display: none;
+}
+
+.sidebar.closed .sidebar-header h3 {
+  display: none;
+}
+
+.sidebar.closed .toggle-btn {
+  margin: 0 auto;
+}
+
+/* Sidebar Menu */
+.sidebar-nav {
+  padding: 10px 0;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, padding-left 0.2s;
+  font-size: 16px;
+  color: #e2e8f0;
+  text-decoration: none;
+  border-radius: 10px;
+  margin: 8px 15px;
+  gap: 20px;
+}
+
+.nav-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  padding-left: 20px;
+}
+
+.nav-item.active {
+  background-color: #4a5568;
+  font-weight: 500;
+  border-left: 3px solid #a0aec0;
+  padding-left: 17px;
+  height: 50px;
+}
+
+.nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: #cbd5e0;
+}
+
+.nav-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.nav-label {
+  flex-grow: 1;
+}
+
+/* Sidebar Closed Mode - Nav Items */
+.sidebar.closed .nav-item {
+  justify-content: center;
+  padding: 10px 0;
+  margin: 5px 5px;
+}
+
+.sidebar.closed .nav-icon {
+  margin: 0 auto;
+}
+
+.sidebar.closed .nav-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.sidebar.closed .nav-label {
+  display: none;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+  padding: 10px;
+  text-align: center;
+  font-size: 12px;
+  background-color: #4a5568;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  font-weight: 400;
+  color: #a0aec0;
+  border-top: 1px solid #43414b;
+}
+
+/* Sidebar Scrollbar */
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Mobile-Friendly Enhancements */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 55px;
+  }
+  .sidebar.open {
+    width: 180px;
+  }
+  .sidebar-header h3 {
+    font-size: 16px;
+  }
+  .nav-item {
+    font-size: 14px;
+    padding: 8px;
+    margin: 4px 8px;
+  }
+  .nav-item:hover {
+    padding-left: 15px;
+  }
+  .nav-item.active {
+    padding-left: 12px;
+  }
+  .sidebar-footer {
+    font-size: 11px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    width: 50px;
+  }
+  .sidebar.open {
+    width: 160px;
+  }
+  .sidebar-header h3 {
+    display: none;
+  }
+  .nav-item {
+    font-size: 13px;
+    padding: 6px;
+    margin: 3px 6px;
+  }
+  .nav-item:hover {
+    padding-left: 12px;
+  }
+  .nav-item.active {
+    padding-left: 9px;
+  }
+  .sidebar-footer {
+    display: none;
+  }
+  .toggle-btn {
+    padding: 6px;
+    width: 32px;
+    height: 32px;
+  }
+  .nav-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+}
