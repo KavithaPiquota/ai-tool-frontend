@@ -47,6 +47,24 @@ const ChatWindow = () => {
   
       const aiResponse = res.data.choices[0]?.message?.content || "No response";
       setChatHistory([...newChat, { role: "assistant", content: aiResponse }]);
+
+      const token = localStorage.getItem('token');
+      if (token) {
+        await axios.post(
+          `${import.meta.env.VITE_BACKEND_URL}/api/search-history`,
+          {
+            query: message,
+            response: aiResponse,
+            model: "llama3-8b-8192"
+          },
+          {
+            headers: {
+              Authorization: token
+            }
+          }
+        );
+      }
+      
     } catch (error) {
       console.error("Groq API Error:", error);
       const errorMessage = error.response
