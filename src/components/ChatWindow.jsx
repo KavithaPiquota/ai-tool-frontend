@@ -13,69 +13,75 @@ const ChatWindow = () => {
   const textareaRef = useRef(null);
 
   const bottomRef = useRef(null);
-  
+
   setTimeout(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, 100);
-  
 
   const handleSend = async () => {
     if (!message.trim()) return;
-  
+
     const newChat = [...chatHistory, { role: "user", content: message }];
     setChatHistory(newChat);
     setMessage("");
-  
+
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
     }
-  
+
     setLoading(true);
-  
+
     try {
-      const res = await axios.post(API_URL, {
-        messages: [{ role: "user", content: message }],
-        model: "llama3-8b-8192",
-        temperature: 0.7,
-        max_tokens: 1024,
-      }, {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${API_KEY}`,
+      const res = await axios.post(
+        API_URL,
+        {
+          messages: [{ role: "user", content: message }],
+          model: "llama3-8b-8192",
+          temperature: 0.7,
+          max_tokens: 1024,
         },
-      });
-  
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${API_KEY}`,
+          },
+        }
+      );
+
       const aiResponse = res.data.choices[0]?.message?.content || "No response";
       setChatHistory([...newChat, { role: "assistant", content: aiResponse }]);
 
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       if (token) {
         await axios.post(
           `${import.meta.env.VITE_BACKEND_URL}/api/search-history`,
           {
             query: message,
             response: aiResponse,
-            model: "llama3-8b-8192"
+            model: "llama3-8b-8192",
           },
           {
             headers: {
-              Authorization: token
-            }
+              Authorization: token,
+            },
           }
         );
       }
-      
     } catch (error) {
       console.error("Groq API Error:", error);
       const errorMessage = error.response
-        ? `Error: ${error.response.status} - ${error.response.data?.error?.message || "Unknown error"}`
+        ? `Error: ${error.response.status} - ${
+            error.response.data?.error?.message || "Unknown error"
+          }`
         : "Failed to fetch response. Please try again.";
-      setChatHistory([...newChat, { role: "assistant", content: errorMessage }]);
+      setChatHistory([
+        ...newChat,
+        { role: "assistant", content: errorMessage },
+      ]);
     } finally {
       setLoading(false);
     }
   };
-  
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -86,7 +92,6 @@ const ChatWindow = () => {
 
   const handleInputChange = (e) => {
     setMessage(e.target.value);
-
 
     if (textareaRef.current) {
       textareaRef.current.style.height = "auto";
@@ -119,7 +124,13 @@ const ChatWindow = () => {
             </div>
           ))}
 
-          {loading && <p className="loading-text">⏳ AI is typing...</p>}
+          {loading && (
+            <div className="loading-spinner">
+              <div className="spinner" />
+              <p>AI is typing...</p>
+            </div>
+          )}
+
           <div ref={bottomRef} />
         </div>
 

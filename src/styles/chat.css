@@ -254,3 +254,32 @@ body {
     border-radius: 20px;
   }
 }
+
+
+
+
+/* Loading Spinner */
+
+.loading-spinner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 15px;
+  font-size: 14px;
+  color: #a0aec0;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 3px solid rgba(160, 174, 192, 0.3); 
+  border-top: 3px solid #3182ce; 
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

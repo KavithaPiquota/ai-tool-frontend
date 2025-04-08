@@ -1,62 +1,3 @@
-
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.popup {
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  max-width: 400px;
-  width: 100%;
-}
-
-/* Popup buttons */
-.popup-buttons {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 15px;
-}
-
-.popup button {
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: 0.3s;
-  font-size: 14px;
-}
-
-.confirm {
-  background: #28a745;
-  color: white;
-}
-
-.confirm:hover {
-  background: #218838;
-}
-
-.cancel {
-  background: #dc3545;
-  color: white;
-}
-
-.cancel:hover {
-  background: #c82333;
-}
-
-
 /* Main Content */
 .main-content {
   margin-left: 280px;
@@ -65,67 +6,6 @@
   flex-direction: column;
   background-color: #f3f4f6;
   transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Header */
-.header {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  background: #1e293b;
-  height: 70px;
-  padding: 0 30px;
-}
-
-.user-profile {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 10px 12px;
-  border-radius: 50px;
-  transition: background 0.3s ease-in-out;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  min-width: fit-content;
-}
-
-/* Avatar */
-.avatar {
-  width: 35px;
-  height: 35px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #3b82f6, #9333ea);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* User Info */
-.user-info {
-  display: flex;
-  flex-direction: column;
-  color: white;
-  white-space: nowrap;
-}
-
-/* Username */
-.username {
-  font-size: 15px;
-  font-weight: 600;
-  color: white;
-}
-
-/* Hover Effects */
-.user-profile:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-.user-profile:hover .avatar {
-  transform: scale(1.05);
 }
 
 /* Chat Window */
@@ -226,7 +106,6 @@
 }
 
 @media (max-width: 768px) {
-
   .toggle-btn:focus {
     outline: none;
   }
@@ -281,7 +160,6 @@
   }
 }
 
-
 .logo {
   width: 120px;
   height: auto;
@@ -315,4 +193,94 @@
     font-size: 16px;
     padding: 10px;
   }
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: #1e293b;
+  height: 70px;
+  padding: 0 30px;
+  position: relative;
+}
+
+/* User Profile Container */
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px 12px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  min-width: fit-content;
+  position: relative;
+}
+
+.user-profile:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Avatar */
+.avatar {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6, #9333ea);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Username */
+.username {
+  font-size: 15px;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 999;
+  width: 160px;
+}
+
+/* Dropdown Items */
+.dropdown-item {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f5f9;
+}
+
+.logout {
+  color: #dc2626;
+}
+
+.cancel {
+  color: #6b7280;
 }
