@@ -1,49 +1,86 @@
-import React, { useEffect, useRef, useState }  from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/style.css";
 
-const Header = () => {
+const Header = ({ user, onLogout }) => {
   const [username, setUsername] = useState("");
-  const API_BASE_URL = import.meta.env.VITE_BACKEND_URL;
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
-
   const profileRef = useRef(null);
 
   const handleLogout = () => {
-    localStorage.removeItem("token"); 
-    localStorage.removeItem("userToken"); 
-    sessionStorage.clear(); 
+    // Clear all stored data
+    localStorage.removeItem("authToken");
+    localStorage.removeItem("userData");
+    localStorage.removeItem("token");
+    localStorage.removeItem("userToken");
+    sessionStorage.clear();
+    
+    // Call parent logout handler
+    if (onLogout) {
+      onLogout();
+    }
+    
     navigate("/login");
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const token = localStorage.getItem("token");
-      if (!token) {
-        alert("Unauthorized access. Please log in.");
-        navigate("/login");
+    const fetchUserData = async () => {
+      // First check if user is passed as prop
+      if (user) {
+        setUsername(user.first_name + " " + user.last_name || "User");
         return;
       }
 
-      try {
-        const response = await fetch(`${API_BASE_URL}/dashboard`, {
-          headers: { Authorization: token },
-        });
-        if (!response.ok) throw new Error("Failed to fetch data");
+      // Check for authToken (from your login system)
+      const authToken = localStorage.getItem("authToken");
+      const userData = localStorage.getItem("userData");
+      
+      if (authToken && userData) {
+        try {
+          const parsedUserData = JSON.parse(userData);
+          setUsername(parsedUserData.first_name + " " + parsedUserData.last_name || "User");
+          return;
+        } catch (error) {
+          console.error("Error parsing user data:", error);
+        }
+      }
 
-        const userData = await response.json();
-        setUsername(userData.user?.name || "User");   
-      } catch (err) {
-        console.error("Error fetching data:", err);
-        alert("Error fetching data");
+      // Fallback: Check for old token format
+      const oldToken = localStorage.getItem("token");
+      if (oldToken) {
+        try {
+          const response = await fetch(`http://localhost:5000/api/user/profile`, {
+            headers: { 
+              Authorization: `Bearer ${oldToken}`,
+              'Content-Type': 'application/json'
+            },
+          });
+
+          if (!response.ok) {
+            throw new Error("Failed to fetch user data");
+          }
+
+          const result = await response.json();
+          if (result.success && result.user) {
+            setUsername(result.user.first_name + " " + result.user.last_name || "User");
+          } else {
+            throw new Error("Invalid user data");
+          }
+        } catch (err) {
+          console.error("Error fetching user data:", err);
+          // Don't show alert, just redirect
+          navigate("/login");
+        }
+      } else {
+        // No token found, redirect to login
         navigate("/login");
       }
     };
-    fetchData();
-  }, [navigate]);
 
-  
+    fetchUserData();
+  }, [navigate, user]);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (profileRef.current && !profileRef.current.contains(event.target)) {
@@ -67,7 +104,7 @@ const Header = () => {
       <div
         className="user-profile"
         onClick={() => setShowPopup(!showPopup)}
-        ref={profileRef} 
+        ref={profileRef}
       >
         <div className="avatar">{username.charAt(0)}</div>
         <span className="username">{username.split(" ")[0]}</span>
